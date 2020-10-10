@@ -1,0 +1,80 @@
+<div class="container">
+  <h1>ngForm app is running!</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <label>
+      Введите ФИО:
+      <input id="name" formControlName="name" type="text">
+    </label>
+    <div *ngIf="_name.invalid && (_name.touched || _name.dirty)" class="notification">
+      <span *ngIf="_name.errors?.required">Обязательное поле</span>
+      <span id="wrongLength" *ngIf="_name.errors?('minlength'):true">Длина имени больше 2 букв</span>
+      <span id="onlyRu" *ngIf="_name.errors?.pattern?['/[а-яёА-ЯЁ]/']:true">Только кириллица</span>
+    </div>
+    <br>
+
+    <label>
+      Введите адресс:
+      <input id="address" formControlName="address" type="text">
+    </label>
+    <div *ngIf="_address.invalid && (_address.touched || _address.dirty)" class="notification">
+      <span *ngIf="_address.errors?.required">Обязательное поле</span>
+    </div>
+    <br>
+
+    <label>
+      Введите пароль:
+      <input id="password" type="password" formControlName="password" name="password">
+    </label>
+    <div *ngIf="_password.invalid && (_password.touched || _password.dirty)" class="notification">
+      <span *ngIf="_password.errors?.required">Обязательное поле</span>
+    </div>
+    <div *ngIf="34 > strengthPass && (_password.touched || _password.dirty)" class="notification">
+      <span class="lowPass">Слабый пароль</span>
+    </div>
+    <div *ngIf="34 < strengthPass && strengthPass < 67 && (_password.touched || _password.dirty)" class="notification">
+      <span class="goodPass">Хороший пароль</span>
+    </div>
+    <div *ngIf="67 < strengthPass && (_password.touched || _password.dirty)" class="notification">
+      <span class="excellentPass">Отличный пароль</span>
+    </div>
+    <br>
+
+    <div>
+      <br>
+      <label for="countrySelect">Выберите страну: </label>
+      <select id="countrySelect" formControlName="currentCountry" name="countrySelect" (click)="CheckLocation()">
+        <option *ngFor="let country of countries" class="country" value="{{country}}">{{country}}</option>
+      </select>
+      <label for="citiesSelect">Выберите город: </label>
+      <select id="citiesSelect" formControlName="currentCity" name="citiesSelect">
+        <option *ngFor="let city of cities" class="city">{{city}}</option>
+      </select>
+    </div>
+    <br>
+
+    <div>
+      <input id="file" type="file" formControlName="file" multiple (change)="UploadFile($event)">
+      <br>
+      <strong>Размер загружаемых файлов: {{sumUploadFiles | calculateSize:sumUploadFiles}} Mb</strong>
+    </div>
+    <br>
+
+    <div>
+      <strong id="confirmationText">Код подтверждения</strong>
+      <p class="confirmationInfo">На ваш телефон отправлен код подтверждения.</p>
+      <p class="confirmationInfo">Введите его в поле ниже.</p>
+      <input id="confirmationCode" formControlName="confirmationCode" type="text" placeholder="код подтверждения">
+      <p class="confirmationCounter">Вы можете запросить код повторно через {{countdown}}</p>
+      <button id="resendCode" type="button" (click)="UpdateAndRunTimer()" [disabled]="isDisabled">Выслать код повторно</button>
+      <button id="confirmCode" type="button" (click)="CodeConfirm()">Подтвердить</button>
+    </div>
+
+    <button id="submitForm" type="submit" [disabled]="form.invalid">
+      Добавить
+    </button>
+  </form>
+  <br>
+  <p class="formInfo">{{ form.value | json}}</p>
+  <p class="formInfo">{{ form.status | json }}</p>
+</div>

@@ -1,0 +1,131 @@
+div.container {
+  background-color: #f1f1f1;
+  margin-top: 5rem;
+  display: flex;
+  flex-flow: column wrap;
+  height: 100%;
+  min-height: 30em;
+}
+
+form {
+  box-shadow: 0.2px 1px 3px 0.2px;
+  margin: 4em auto;
+  background-color: white;
+  border-radius: 4px;
+  width: 40%;
+  min-height: 8rem;
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #ee031e; /* red */
+}
+
+span {
+  border: 1px solid red;
+  font-size: 18px;
+  border-radius: 5px;
+  margin: 0 1em 0 0.5em;
+  padding: 0.2em;
+  background-color: #fdbdb7;
+  color: red;
+}
+
+span.lowPass {
+  border: 1px solid #ae9620;
+  font-size: 18px;
+  border-radius: 5px;
+  margin: 0 1em 0 0.5em;
+  padding: 0.2em;
+  background-color: #f7fcb3;
+  color: #ae9620;
+}
+
+span.goodPass {
+  border: 1px solid green;
+  font-size: 18px;
+  border-radius: 5px;
+  margin: 0 1em 0 0.5em;
+  padding: 0.2em;
+  background-color: #bcfdb7;
+  color: green;
+}
+
+span.excellentPass {
+  border: 1px solid blue;
+  font-size: 18px;
+  border-radius: 5px;
+  margin: 0 1em 0 0.5em;
+  padding: 0.2em;
+  background-color: #b7fbfd;
+  color: blue;
+}
+
+strong {
+  margin-left: 1.1em;
+}
+
+p.confirmationInfo {
+  margin: 0 0 1em 1.7em
+}
+
+p.confirmationCounter {
+  margin-left: 1.1em;
+}
+
+div.notification {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+input {
+  margin-top: 1.5rem;
+  margin-left: 1px;
+  border: 1px solid #626262;
+  font-size: 18px;
+}
+
+label {
+  font-size: 18px;
+  margin-left: 1em;
+}
+
+#name {
+  margin-left: 0.6em;
+}
+
+#file {
+  margin-left: 1em;
+}
+
+#confirmationText {
+  font-size: 24px;
+}
+
+#confirmationCode {
+  margin: 0 0 0 1.1em;
+  text-align: center;
+}
+
+button {
+  margin: 2rem;
+  font-size: 20px;
+  border-radius: 4px;
+  background-color: #02a5d4;
+  color: #fcfbfb;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #f1f1f1;
+  color: #6d6b6b;
+}
+
+p.formInfo {
+  max-width: 40%;
+}
+
+p.formInfo:hover {
+  background: #1a1a1a;
+  color: #ffffff;
+}
